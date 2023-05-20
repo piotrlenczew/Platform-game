@@ -6,6 +6,7 @@ private:
 	sf::Texture textureSheet;
 
 	//Animation
+	sf::IntRect currentFrame;
 
 	//Movement
 
@@ -19,6 +20,7 @@ public:
 	~Player();
 
 	//Functions
+	void updateMovement();
 	void update();
 	void render(sf::RenderTarget& target);
 };

@@ -12,6 +12,8 @@ void Player::initTexture()
 void Player::initSprite()
 {
 	this->sprite.setTexture(this->textureSheet);
+	this->currentFrame = sf::IntRect(0,0,8,15);
+	this->sprite.setTextureRect(this->currentFrame);
 }
 
 Player::Player()
@@ -24,8 +26,30 @@ Player::~Player()
 {
 }
 
+void Player::updateMovement()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		this->sprite.move(-1.f, 0.f);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		this->sprite.move(1.f, 0.f);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	{
+		this->sprite.move(0.f, -1.f);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		this->sprite.move(0.f, 1.f);
+	}
+}
+
 void Player::update()
 {
+	this->updateMovement();
 }
 
 void Player::render(sf::RenderTarget& target)
