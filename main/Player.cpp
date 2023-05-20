@@ -12,7 +12,7 @@ void Player::initTexture()
 void Player::initSprite()
 {
 	this->sprite.setTexture(this->textureSheet);
-	this->currentFrame = sf::IntRect(0,0,8,15);
+	this->currentFrame = sf::IntRect(0,0,32,66);
 	this->sprite.setTextureRect(this->currentFrame);
 }
 
