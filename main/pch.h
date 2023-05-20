@@ -1,4 +1,7 @@
 #include<iostream>
+#include<cstdlib>
+#include<time.h>
+#include<ctime>
 
 // SFML
 #include <SFML/System.hpp>
