@@ -4,6 +4,8 @@ class Player
 private:
 	sf::Sprite sprite;
 	sf::Texture textureSheet;
+	bool running;
+	sf::Clock animationTimer;
 
 	//Animation
 	sf::IntRect currentFrame;
@@ -12,8 +14,10 @@ private:
 
 	//Core values
 
+	void initVariables();
 	void initTexture();
 	void initSprite();
+	void initAnimations();
 
 public:
 	Player();
@@ -21,6 +25,7 @@ public:
 
 	//Functions
 	void updateMovement();
+	void updateAnimations();
 	void update();
 	void render(sf::RenderTarget& target);
 };
