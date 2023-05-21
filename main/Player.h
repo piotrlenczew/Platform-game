@@ -33,10 +33,16 @@ private:
 
 public:
 	Player();
-	~Player();
+	virtual ~Player();
 
 	//Accesors
 	const bool& getAnimationSwitch();
+	const sf::Vector2f getPosition() const;
+	const sf::FloatRect getGlobalBounds() const;
+
+	//Modifiers
+	void setPosition(const float x, const float y);
+	void resetVelocityY();
 
 	//Functions
 	void resetAnimationTimer();
