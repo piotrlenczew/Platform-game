@@ -5,7 +5,7 @@ void Game::initWindow()
 {
 	// size, name, settiings (sf::Style::Default for typical window)
 	this->window.create(sf::VideoMode(800, 600), "Game name", sf::Style::Close | sf::Style::Titlebar);
-	this->window.setFramerateLimit(144);
+	this->window.setFramerateLimit(60);
 }
 
 void Game::initPlayer()
