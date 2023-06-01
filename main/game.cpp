@@ -89,10 +89,8 @@ void Game::render()
 	this->window.clear();
 
 	//Render game
-	this->renderPlayer();
-
 	this->renderTiles();
-
+	this->renderPlayer();
 
 	this->window.display();
 }
