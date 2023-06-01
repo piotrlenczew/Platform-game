@@ -2,15 +2,18 @@
 class Tile
 {
 private:
-	sf::Sprite sprite;
-	const bool damaging;
+
 
 public:
-	Tile(sf::Texture& texture_sheet, sf::IntRect texture_rect, bool damaging = false);
+	bool can_pass_through;
+	bool is_exit;
+	sf::Vector2f position;
+	sf::Texture texture;
+	sf::Sprite sprite;
 
-	const sf::FloatRect getGlobalBounds() const;
+	Tile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit);
 
-	void update();
-	void render(sf::RenderTarget& target);
+	bool setUpSprite(std::string texturename);
+
 };
 

@@ -4,7 +4,7 @@
 void Game::initWindow()
 {
 	// size, name, settiings (sf::Style::Default for typical window)
-	this->window.create(sf::VideoMode(800, 600), "Game name", sf::Style::Close | sf::Style::Titlebar);
+	this->window.create(sf::VideoMode(width, height), "Game name", sf::Style::Close | sf::Style::Titlebar);
 	this->window.setFramerateLimit(60);
 }
 
@@ -13,8 +13,11 @@ void Game::initPlayer()
 	this->player = new Player();
 }
 
-Game::Game()
+Game::Game(unsigned int width, unsigned int height)
 {
+	this->width = width;
+	this->height = height;
+	this->createTileMap();
 	this->initWindow();
 	this->initPlayer();
 }
@@ -40,6 +43,12 @@ void Game::updateCollision()
 			this->window.getSize().y - this->player->getGlobalBounds().height
 		);
 	}
+}
+
+void Game::createTileMap()
+{
+	this ->tileMap = new TileMap();
+	this->tileMap->fill_the_background(this->width, this->height);
 }
 
 void Game::update()
@@ -82,6 +91,8 @@ void Game::render()
 	//Render game
 	this->renderPlayer();
 
+	this->renderTiles();
+
 
 	this->window.display();
 }
@@ -89,4 +100,9 @@ void Game::render()
 const sf::RenderWindow& Game::getWindow() const
 {
 	return this->window;
+}
+
+void Game::renderTiles()
+{
+	this->tileMap->render(this->window);
 }

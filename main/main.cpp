@@ -5,7 +5,10 @@ int main()
 {
     srand(static_cast<unsigned>(time(0)));
 
-    Game game;
+    unsigned int width = 800;
+    unsigned int height = 600;
+    
+    Game game(width, height);
 
     while (game.getWindow().isOpen())
     {
