@@ -9,6 +9,9 @@ private:
 	sf::Texture textureSheet;
 	sf::Clock animationTimer;
 
+	//State
+	bool in_air;
+
 	//Animation
 	short animationState;
 	sf::IntRect currentFrame;
@@ -39,6 +42,7 @@ public:
 	const bool& getAnimationSwitch();
 	const sf::Vector2f getPosition() const;
 	const sf::FloatRect getGlobalBounds() const;
+	void setInAir(bool in_air);
 
 	//Modifiers
 	void setPosition(const float x, const float y);

@@ -4,6 +4,7 @@
 void Player::initVariables()
 {
 	this->animationState = IDLE;
+	this->in_air = false;
 }
 
 void Player::initTexture()
@@ -36,7 +37,7 @@ void Player::initPhysics()
 	this->acceleration = 4.f;
 	this->drag = 0.87f;
 	this->gravity = 4.f;
-	this->velocityMaxY = 15.f;
+	this->velocityMaxY = 30.f;
 }
 
 Player::Player()
@@ -71,6 +72,11 @@ const sf::Vector2f Player::getPosition() const
 const sf::FloatRect Player::getGlobalBounds() const
 {
 	return this->sprite.getGlobalBounds();
+}
+
+void Player::setInAir(bool in_air)
+{
+	this->in_air = in_air;
 }
 
 void Player::setPosition(const float x, const float y)
@@ -124,7 +130,8 @@ void Player::updatePhysics()
 
 void Player::updateMovement()
 {
-	this->animationState = PLAYER_ANIMATION_STATES::IDLE;
+	if (!this->in_air)
+		this->animationState = PLAYER_ANIMATION_STATES::IDLE;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
@@ -137,11 +144,14 @@ void Player::updateMovement()
 		this->animationState = PLAYER_ANIMATION_STATES::MOVING_RIGHT;
 	}
 
-	/*
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !this->in_air)
 	{
+		this->velocity.y = -30.0f;
 		this->sprite.move(0.f, -1.f);
+		this->in_air = true;
+		this->animationState = PLAYER_ANIMATION_STATES::JUMPING;
 	}
+	/*
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		this->sprite.move(0.f, 1.f);
