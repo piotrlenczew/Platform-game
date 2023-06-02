@@ -1,6 +1,6 @@
 #pragma once
 
-enum PLAYER_ANIMATION_STATES { IDLE, MOVING_LEFT, MOVING_RIGHT, JUMPING, FALLING };
+enum PLAYER_ANIMATION_STATES { IDLE, MOVING_LEFT, MOVING_RIGHT, IN_AIR_LEFT, IN_AIR_RIGHT, CRAWLING };
 
 class Player
 {
@@ -8,6 +8,9 @@ private:
 	sf::Sprite sprite;
 	sf::Texture textureSheet;
 	sf::Clock animationTimer;
+
+	//State
+	bool in_air;
 
 	//Animation
 	short animationState;
@@ -39,6 +42,7 @@ public:
 	const bool& getAnimationSwitch();
 	const sf::Vector2f getPosition() const;
 	const sf::FloatRect getGlobalBounds() const;
+	void setInAir(bool in_air);
 
 	//Modifiers
 	void setPosition(const float x, const float y);

@@ -43,6 +43,7 @@ void Game::updateCollision()
 			this->player->getPosition().x,
 			this->window.getSize().y - this->player->getGlobalBounds().height
 		);
+		this->player->setInAir(false);
 	}
 }
 
