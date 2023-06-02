@@ -8,7 +8,7 @@ int main()
     unsigned int width = 800;
     unsigned int height = 600;
     
-    Game game(width, height);
+    Game game(width, height, "../Textures/map_1.txt");
 
     while (game.getWindow().isOpen())
     {

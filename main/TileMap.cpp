@@ -1,24 +1,50 @@
 #include "pch.h"
 #include "TileMap.h"
+#include "Tile.h"
+#include <fstream>
 
 TileMap::TileMap()
 {
-	//Initialize tilemap
+
 }
 
 TileMap::~TileMap()
 {
 }
 
-void TileMap::fill_the_background(unsigned width, unsigned height)
+void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height, std::string map_source)
 {
-    for (int i = 0; i < width / 60 + 1; i++)
+    std::ifstream in(map_source);
+    if (!in.is_open())
+    {
+		std::cout << "Error: file not found" << std::endl;
+		return;
+	}
+    unsigned int width, height;
+    in >> width;
+    in >> height;
+    int type = 0;
+    for (int i = 0; i < height; i++)
     {
         std::vector<Tile*> row;
-        for (int j = 0; j < height / 16 + 1; j++)
+        for (int j = 0; j < width; j++)
         {
-            row.push_back(new Tile("../Textures/Tiles.png", i * 60, j * 16, false, false));
+            in >> type;
+            std :: cout<< type << " ";
+            if (type == 1)
+            {
+                row.push_back(new DirtTile("../Textures/squares.png", j * 14, i * 14, false, false));
+            }
+            else if (type == 2)
+            {
+                row.push_back(new SkyTile("../Textures/squares.png", j * 14, i * 14, false, false));
+            }
+            else if (type == 3)
+            {
+                row.push_back(new BrickTile("../Textures/squares.png", j * 14, i * 14, false, false));
+            }
         }
+        std::cout << std::endl;
         tiles.push_back(row);
     }
 }

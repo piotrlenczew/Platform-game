@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "Tile.h"
 
-Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit)
+Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit, sf::IntRect wherabouts_in_png)
 {
-    if (!setUpSprite(texturename))
+    if (!setUpSprite(texturename, wherabouts_in_png))
     {
         return;
     }
@@ -14,7 +14,7 @@ Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, boo
 
 }
 
-bool Tile::setUpSprite(std::string texturename)
+bool Tile::setUpSprite(std::string texturename, sf::IntRect wherabouts_in_png)
 {
 
     if (!texture.loadFromFile(texturename))
@@ -25,6 +25,6 @@ bool Tile::setUpSprite(std::string texturename)
 
     texture.setSmooth(true);
     sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(78, 0, 60, 16));
+    sprite.setTextureRect(wherabouts_in_png);
     return true;
 }

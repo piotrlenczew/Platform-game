@@ -13,8 +13,9 @@ void Game::initPlayer()
 	this->player = new Player();
 }
 
-Game::Game(unsigned int width, unsigned int height)
+Game::Game(unsigned int width, unsigned int height, std::string map_source)
 {
+	this->map_source = map_source;
 	this->width = width;
 	this->height = height;
 	this->createTileMap();
@@ -48,7 +49,7 @@ void Game::updateCollision()
 void Game::createTileMap()
 {
 	this ->tileMap = new TileMap();
-	this->tileMap->fill_the_background(this->width, this->height);
+	this->tileMap->fill_the_background(this->width, this->height, map_source);
 }
 
 void Game::update()

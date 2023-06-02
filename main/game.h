@@ -5,6 +5,7 @@
 class Game
 {
 private:
+	std::string map_source;
 	sf::RenderWindow window;
 	sf::Event event;
 	unsigned int width;
@@ -16,7 +17,7 @@ private:
 	void initPlayer();
 
 public:
-	Game(unsigned int width, unsigned int height);
+	Game(unsigned int width, unsigned int height, std::string map_source);
 	~Game();
 
 	//Functions

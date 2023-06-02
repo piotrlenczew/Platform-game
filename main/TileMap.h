@@ -12,7 +12,7 @@ public:
 	~TileMap();
 
 	//Functions
-	void fill_the_background(unsigned width, unsigned height);
+	void fill_the_background(unsigned screen_width, unsigned screen_height, std::string map_source);
 	void addTile(unsigned x, unsigned y);
 	void removeTile(unsigned x, unsigned y);
 
