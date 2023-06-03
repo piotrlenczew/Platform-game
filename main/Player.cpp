@@ -89,6 +89,11 @@ void Player::resetVelocityY()
 	this->velocity.y = 0.f;
 }
 
+void Player::resetVelocityX()
+{
+	this->velocity.x = 0.f;
+}
+
 void Player::resetAnimationTimer()
 {
 	this->animationTimer.restart();
