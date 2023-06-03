@@ -53,19 +53,17 @@ void Game::updateCollision()
 		this->player->setPosition(this->player->getPosition().x, 0.f);
 	}
 	// Right
-	if (this->player->getPosition().x + this->player->getGlobalBounds().width >= this->window.getSize().x)
+	if (this->player->getPosition().x > this->window.getSize().x)
 	{
-		this->player->resetVelocityX();
+		this->player->setPosition(0.f, this->player->getPosition().y);
+	}
+	// Left
+	if (this->player->getPosition().x + this->player->getGlobalBounds().width < 0)
+	{
 		this->player->setPosition(
 			this->window.getSize().x - this->player->getGlobalBounds().width,
 			this->player->getPosition().y
 		);
-	}
-	// Left
-	if (this->player->getPosition().x <= 0)
-	{
-		this->player->resetVelocityX();
-		this->player->setPosition(0.f, this->player->getPosition().y);
 	}
 }
 
