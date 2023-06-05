@@ -40,13 +40,14 @@ void Player::initPhysics()
 	this->velocityMaxY = 30.f;
 }
 
-Player::Player()
+Player::Player(sf::Vector2f spawnpoint) : spawnpoint(spawnpoint)
 {
 	this->initVariables();
 	this->initTexture();
 	this->initSprite();
 	this->initAnimations();
 	this->initPhysics();
+	this->setPosition(spawnpoint.x, spawnpoint.y);
 }
 
 Player::~Player()
