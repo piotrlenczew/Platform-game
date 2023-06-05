@@ -21,7 +21,7 @@ void Player::initSprite()
 	this->currentFrame = sf::IntRect(0, 56, 8, 8);
 
 	this->sprite.setTextureRect(this->currentFrame);
-	this->sprite.setScale(4.0f, 4.0f);
+	this->sprite.setScale(5.f, 5.f);
 }
 
 void Player::initAnimations()
@@ -206,7 +206,7 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}
-		this->sprite.setScale(4.0f, 4.0f);
+		this->sprite.setScale(4.5f, 4.5f);
 		this->sprite.setOrigin(0.f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::MOVING_LEFT)
@@ -221,22 +221,22 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}
-		this->sprite.setScale(-4.0f, 4.0f);
-		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.0f, 0.f);
+		this->sprite.setScale(-4.5f, 4.5f);
+		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.5f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::IN_AIR_RIGHT)
 	{
 		this->currentFrame.top = 80.0f;
 		this->currentFrame.left += 16.0f;
-		this->sprite.setScale(4.0f, 4.0f);
+		this->sprite.setScale(4.5f, 4.5f);
 		this->sprite.setOrigin(0.f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::IN_AIR_LEFT)
 	{
 		this->currentFrame.top = 80.0f;
 		this->currentFrame.left += 16.0f;
-		this->sprite.setScale(-4.0f, 4.0f);
-		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.0f, 0.f);
+		this->sprite.setScale(-4.5f, 4.5f);
+		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.5f, 0.f);
 	}
 	else
 		this->animationTimer.restart();

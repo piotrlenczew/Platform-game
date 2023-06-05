@@ -64,7 +64,6 @@ void Game::updateCollision()
 				//Top collision
 				else if (playerBounds.top > tileBounds.top &&
 					playerBounds.top + playerBounds.height > tileBounds.top + tileBounds.height &&
-					playerBounds.top + playerBounds.height < tileBounds.top + tileBounds.height + 2 &&
 					playerBounds.left < tileBounds.left + tileBounds.width &&
 					playerBounds.left + playerBounds.width > tileBounds.left
 					)
