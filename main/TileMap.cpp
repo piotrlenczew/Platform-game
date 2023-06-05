@@ -37,7 +37,7 @@ void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height,
             }
             else if (type == 2)
             {
-                row.push_back(new SkyTile("../Textures/squares.png", j * 45, i * 45, false, false));
+                row.push_back(new SkyTile("../Textures/squares.png", j * 45, i * 45, true, false));
             }
             else if (type == 3)
             {
