@@ -37,15 +37,18 @@ void Game::updatePlayer()
 void Game::updateCollision()
 {
 	//Tiles
+	sf::FloatRect playerBounds = this->player->getGlobalBounds();
+	sf::FloatRect tileBounds;
 	for (auto tileRow : this->tileMap->getTiles())
 	{
 		for (auto& tile : tileRow)
 		{
-			sf::FloatRect playerBounds = this->player->getGlobalBounds();
-			sf::FloatRect tileBounds = tile->getGlobalBounds();
+			playerBounds = this->player->getGlobalBounds();
+			tileBounds = tile->getGlobalBounds();
 		
 			if (tileBounds.intersects(playerBounds) && !tile->can_pass_through)
 			{
+				std::cout << playerBounds.left << ", " << playerBounds.top << ": ";
 				//Bottom collision
 				if (playerBounds.top < tileBounds.top &&
 					playerBounds.top + playerBounds.height < tileBounds.top + tileBounds.height &&
@@ -56,19 +59,22 @@ void Game::updateCollision()
 					this->player->resetVelocityY();
 					this->player->setPosition(playerBounds.left, tileBounds.top - playerBounds.height);
 					this->player->setInAir(false);
+					playerBounds = this->player->getGlobalBounds();
 				}
 				//Top collision
 				else if (playerBounds.top > tileBounds.top &&
 					playerBounds.top + playerBounds.height > tileBounds.top + tileBounds.height &&
+					playerBounds.top + playerBounds.height < tileBounds.top + tileBounds.height + 2 &&
 					playerBounds.left < tileBounds.left + tileBounds.width &&
 					playerBounds.left + playerBounds.width > tileBounds.left
 					)
 				{
 					this->player->resetVelocityY();
 					this->player->setPosition(playerBounds.left, tileBounds.top + tileBounds.height);
+					playerBounds = this->player->getGlobalBounds();
 				}
 
-				playerBounds = this->player->getGlobalBounds();
+				std::cout << playerBounds.left << ", " << playerBounds.top << std::endl;
 
 				//Right collision
 				if (playerBounds.left < tileBounds.left &&
