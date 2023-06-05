@@ -8,6 +8,7 @@ private:
 	sf::Sprite sprite;
 	sf::Texture textureSheet;
 	sf::Clock animationTimer;
+	sf::Vector2f spawnpoint;
 
 	//State
 	bool in_air;
@@ -35,7 +36,7 @@ private:
 	void initPhysics();
 
 public:
-	Player();
+	Player(sf::Vector2f spawnpoint);
 	virtual ~Player();
 
 	//Accesors

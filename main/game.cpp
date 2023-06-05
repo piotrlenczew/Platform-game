@@ -10,7 +10,7 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-	this->player = new Player();
+	this->player = new Player(sf::Vector2f(100, 100));
 }
 
 Game::Game(unsigned int width, unsigned int height, std::string map_source)
@@ -37,16 +37,64 @@ void Game::updatePlayer()
 void Game::updateCollision()
 {
 	//Tiles
+	sf::FloatRect playerBounds = this->player->getGlobalBounds();
+	sf::FloatRect tileBounds;
 	for (auto tileRow : this->tileMap->getTiles())
 	{
 		for (auto& tile : tileRow)
 		{
-			sf::FloatRect playerBounds = this->player->getGlobalBounds();
-			sf::FloatRect tileBounds = tile->getGlobalBounds();
+			playerBounds = this->player->getGlobalBounds();
+			tileBounds = tile->getGlobalBounds();
 		
 			if (tileBounds.intersects(playerBounds) && !tile->can_pass_through)
 			{
-				std::cout << "Collision!" << "\n";
+				std::cout << playerBounds.left << ", " << playerBounds.top << ": ";
+				//Bottom collision
+				if (playerBounds.top < tileBounds.top &&
+					playerBounds.top + playerBounds.height < tileBounds.top + tileBounds.height &&
+					playerBounds.left < tileBounds.left + tileBounds.width &&
+					playerBounds.left + playerBounds.width > tileBounds.left
+					)
+				{
+					this->player->resetVelocityY();
+					this->player->setPosition(playerBounds.left, tileBounds.top - playerBounds.height);
+					this->player->setInAir(false);
+					playerBounds = this->player->getGlobalBounds();
+				}
+				//Top collision
+				else if (playerBounds.top > tileBounds.top &&
+					playerBounds.top + playerBounds.height > tileBounds.top + tileBounds.height &&
+					playerBounds.left < tileBounds.left + tileBounds.width &&
+					playerBounds.left + playerBounds.width > tileBounds.left
+					)
+				{
+					this->player->resetVelocityY();
+					this->player->setPosition(playerBounds.left, tileBounds.top + tileBounds.height);
+					playerBounds = this->player->getGlobalBounds();
+				}
+
+				std::cout << playerBounds.left << ", " << playerBounds.top << std::endl;
+
+				//Right collision
+				if (playerBounds.left < tileBounds.left &&
+					playerBounds.left + playerBounds.width < tileBounds.left + tileBounds.width &&
+					playerBounds.top < tileBounds.top + tileBounds.height &&
+					playerBounds.top + playerBounds.height > tileBounds.top
+					)
+				{
+					this->player->resetVelocityX();
+					this->player->setPosition(tileBounds.left - playerBounds.width, playerBounds.top);
+				}
+				//Left collision
+				else if (playerBounds.left > tileBounds.left &&
+					playerBounds.left + playerBounds.width > tileBounds.left + tileBounds.width &&
+					playerBounds.top < tileBounds.top + tileBounds.height &&
+					playerBounds.top + playerBounds.height > tileBounds.top
+					)
+				{
+					this->player->resetVelocityX();
+					this->player->setPosition(tileBounds.left + tileBounds.width, playerBounds.top);
+				}
 			}
 		}
 	}

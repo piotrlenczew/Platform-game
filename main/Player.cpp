@@ -21,7 +21,7 @@ void Player::initSprite()
 	this->currentFrame = sf::IntRect(0, 56, 8, 8);
 
 	this->sprite.setTextureRect(this->currentFrame);
-	this->sprite.setScale(4.0f, 4.0f);
+	this->sprite.setScale(5.f, 5.f);
 }
 
 void Player::initAnimations()
@@ -40,13 +40,14 @@ void Player::initPhysics()
 	this->velocityMaxY = 30.f;
 }
 
-Player::Player()
+Player::Player(sf::Vector2f spawnpoint) : spawnpoint(spawnpoint)
 {
 	this->initVariables();
 	this->initTexture();
 	this->initSprite();
 	this->initAnimations();
 	this->initPhysics();
+	this->setPosition(spawnpoint.x, spawnpoint.y);
 }
 
 Player::~Player()
@@ -145,7 +146,7 @@ void Player::updateMovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && this->in_air)
 	{
-		this->move(-0.5f, 0.f);
+		this->move(-1.f, 0.f);
 		this->animationState = PLAYER_ANIMATION_STATES::IN_AIR_LEFT;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !this->in_air)
@@ -155,7 +156,7 @@ void Player::updateMovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && this->in_air)
 	{
-		this->move(0.5f, 0.f);
+		this->move(1.f, 0.f);
 		this->animationState = PLAYER_ANIMATION_STATES::IN_AIR_RIGHT;
 	}
 
@@ -206,7 +207,7 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}
-		this->sprite.setScale(4.0f, 4.0f);
+		this->sprite.setScale(4.5f, 4.5f);
 		this->sprite.setOrigin(0.f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::MOVING_LEFT)
@@ -221,22 +222,22 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}
-		this->sprite.setScale(-4.0f, 4.0f);
-		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.0f, 0.f);
+		this->sprite.setScale(-4.5f, 4.5f);
+		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.5f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::IN_AIR_RIGHT)
 	{
 		this->currentFrame.top = 80.0f;
 		this->currentFrame.left += 16.0f;
-		this->sprite.setScale(4.0f, 4.0f);
+		this->sprite.setScale(4.5f, 4.5f);
 		this->sprite.setOrigin(0.f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::IN_AIR_LEFT)
 	{
 		this->currentFrame.top = 80.0f;
 		this->currentFrame.left += 16.0f;
-		this->sprite.setScale(-4.0f, 4.0f);
-		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.0f, 0.f);
+		this->sprite.setScale(-4.5f, 4.5f);
+		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.5f, 0.f);
 	}
 	else
 		this->animationTimer.restart();
