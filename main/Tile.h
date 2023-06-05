@@ -73,3 +73,9 @@ class MinecraftLavaTile : public Tile
 public:
 	MinecraftLavaTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(416, 448, 32, 32)) {};
 };
+
+class MinecraftMushroomTile : public Tile
+{
+public:
+	MinecraftMushroomTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(384, 32, 32, 32)) {};
+};

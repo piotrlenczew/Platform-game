@@ -62,6 +62,10 @@ void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height,
             {
                 row.push_back( new MinecraftSkyTile("../Textures/terrain.png", j * 32, i * 32, true, false));
             }
+            else if (type == 6)
+            {
+                row.push_back(new MinecraftMushroomTile("../Textures/terrain.png", j * 32, i * 32, false, false));
+            }
         }
         std::cout << std::endl;
         tiles.push_back(row);
