@@ -35,6 +35,21 @@ void Game::updatePlayer()
 
 void Game::updateCollision()
 {
+	//Tiles
+	for (auto tileRow : this->tileMap->getTiles())
+	{
+		for (auto& tile : tileRow)
+		{
+			sf::FloatRect playerBounds = this->player->getGlobalBounds();
+			sf::FloatRect tileBounds = tile->getGlobalBounds();
+		
+			if (tileBounds.intersects(playerBounds) && !tile->can_pass_through)
+			{
+				std::cout << "Collision!" << "\n";
+			}
+		}
+	}
+
 	//Screen
 	// Bottom
 	if (this->player->getPosition().y + this->player->getGlobalBounds().height >= this->window.getSize().y)

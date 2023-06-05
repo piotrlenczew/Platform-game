@@ -57,6 +57,11 @@ void TileMap::removeTile(unsigned x, unsigned y)
 {
 }
 
+std::vector<std::vector<Tile*>> TileMap::getTiles()
+{
+    return this->tiles;
+}
+
 void TileMap::update()
 {
 }

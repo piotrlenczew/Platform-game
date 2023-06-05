@@ -13,6 +13,8 @@ public:
 
 	Tile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit, sf::IntRect wherabouts_in_png);
 
+	const sf::FloatRect getGlobalBounds() const;
+
 	virtual bool setUpSprite(std::string texturename, sf::IntRect wherabouts_in_png);
 
 };

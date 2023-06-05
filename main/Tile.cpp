@@ -14,6 +14,11 @@ Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, boo
 
 }
 
+const sf::FloatRect Tile::getGlobalBounds() const
+{
+    return this->sprite.getGlobalBounds();
+}
+
 bool Tile::setUpSprite(std::string texturename, sf::IntRect wherabouts_in_png)
 {
 

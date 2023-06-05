@@ -42,9 +42,9 @@ public:
 	const bool& getAnimationSwitch();
 	const sf::Vector2f getPosition() const;
 	const sf::FloatRect getGlobalBounds() const;
-	void setInAir(bool in_air);
 
 	//Modifiers
+	void setInAir(bool in_air);
 	void setPosition(const float x, const float y);
 	void resetVelocityY();
 	void resetVelocityX();
