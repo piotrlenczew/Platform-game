@@ -33,15 +33,15 @@ void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height,
             std :: cout<< type << " ";
             if (type == 1)
             {
-                row.push_back(new DirtTile("../Textures/squares.png", j * 14, i * 14, false, false));
+                row.push_back(new DirtTile("../Textures/squares.png", j * 45, i * 45, false, false));
             }
             else if (type == 2)
             {
-                row.push_back(new SkyTile("../Textures/squares.png", j * 14, i * 14, false, false));
+                row.push_back(new SkyTile("../Textures/squares.png", j * 45, i * 45, false, false));
             }
             else if (type == 3)
             {
-                row.push_back(new BrickTile("../Textures/squares.png", j * 14, i * 14, false, false));
+                row.push_back(new BrickTile("../Textures/squares.png", j * 45, i * 45, false, false));
             }
         }
         std::cout << std::endl;
