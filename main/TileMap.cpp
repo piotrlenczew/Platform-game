@@ -10,6 +10,13 @@ TileMap::TileMap()
 
 TileMap::~TileMap()
 {
+    for (auto tileRow : this->tiles)
+    {
+        for (auto& tile : tileRow)
+        {
+            delete tile;
+        }
+    }
 }
 
 void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height, std::string map_source)

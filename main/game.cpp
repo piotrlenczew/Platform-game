@@ -26,6 +26,7 @@ Game::Game(unsigned int width, unsigned int height, std::string map_source)
 Game::~Game()
 {
 	delete this->player;
+	delete this->tileMap;
 }
 
 void Game::updatePlayer()
