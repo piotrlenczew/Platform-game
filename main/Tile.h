@@ -22,18 +22,54 @@ public:
 class DirtTile : public Tile
 {
 public:
-	DirtTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(1, 1, 45, 45)) {};
+	DirtTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(3, 3, 40, 40)) {};
 };
 
 class SkyTile : public Tile
 {
 public:
-	SkyTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(32, 113, 45, 45)) {};
+	SkyTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(32, 113, 40, 40)) {};
 };
 
 class BrickTile : public Tile
 {
 public:
-	BrickTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(49, 34, 45, 45)) {};
+	BrickTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(49, 34, 40, 40)) {};
 };
 
+class MinecraftDirtTile : public Tile
+{
+public:
+	MinecraftDirtTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(64, 0, 32, 32)) {};
+};
+
+class MinecraftGrassTile : public Tile
+{
+public:
+	MinecraftGrassTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(96, 0, 32, 32)) {};
+};
+
+class MinecraftLeafTile : public Tile
+{
+public:
+	MinecraftLeafTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(128, 96, 32, 32)) {};
+};
+
+class MinecraftWoodTile : public Tile
+{
+public:
+	MinecraftWoodTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(160, 224, 32, 32)) {};
+};
+
+class MinecraftSkyTile : public Tile
+{
+public:
+	MinecraftSkyTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(128, 352, 32, 32)) {};
+};
+
+
+class MinecraftLavaTile : public Tile
+{
+public:
+	MinecraftLavaTile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit) : Tile(texturename, x, y, can_pass_through, is_exit, sf::IntRect(416, 448, 32, 32)) {};
+};

@@ -5,8 +5,8 @@ int main()
 {
     srand(static_cast<unsigned>(time(0)));
 
-    unsigned int width = 45 * 17;
-    unsigned int height = 45 * 12;
+    unsigned int width = 32 * 24;
+    unsigned int height = 32 * 16;
     
     Game game(width, height, "../Textures/map_1.txt");
 
