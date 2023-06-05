@@ -145,7 +145,7 @@ void Player::updateMovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && this->in_air)
 	{
-		this->move(-0.5f, 0.f);
+		this->move(-1.f, 0.f);
 		this->animationState = PLAYER_ANIMATION_STATES::IN_AIR_LEFT;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && !this->in_air)
@@ -155,7 +155,7 @@ void Player::updateMovement()
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && this->in_air)
 	{
-		this->move(0.5f, 0.f);
+		this->move(1.f, 0.f);
 		this->animationState = PLAYER_ANIMATION_STATES::IN_AIR_RIGHT;
 	}
 
