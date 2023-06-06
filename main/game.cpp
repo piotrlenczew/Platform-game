@@ -36,18 +36,20 @@ void Game::updatePlayer()
 	this->player->update();
 }
 
-void Game::updateCollision(sf::FloatRect playerBounds)
+void Game::updateCollision(sf::FloatRect playerBoundsBeforeMove)
 {
 	//Tiles
 	sf::FloatRect tileBounds;
+	sf::FloatRect playerBounds = playerBoundsBeforeMove;
+	sf::FloatRect currentPlayerBounds = this->player->getGlobalBounds();
 	for (auto tileRow : this->tileMap->getTiles())
 	{
 		for (auto& tile : tileRow)
 		{
-			playerBounds = this->player->getGlobalBounds();
 			tileBounds = tile->getGlobalBounds();
-
-			if (tileBounds.intersects(playerBounds) && tile->can_pass_through)
+			playerBounds = playerBoundsBeforeMove;
+			currentPlayerBounds = this->player->getGlobalBounds();
+			if (tileBounds.intersects(currentPlayerBounds) && tile->can_pass_through)
 			{
 				if (tile->deadly)
 				{
@@ -61,7 +63,7 @@ void Game::updateCollision(sf::FloatRect playerBounds)
 				}
 			}
 		
-			else if (tileBounds.intersects(playerBounds))
+			else if (tileBounds.intersects(currentPlayerBounds))
 			{
 				//Bottom collision
 				if (playerBounds.top < tileBounds.top &&
@@ -71,9 +73,10 @@ void Game::updateCollision(sf::FloatRect playerBounds)
 					)
 				{
 					this->player->resetVelocityY();
-					this->player->setPosition(playerBounds.left, tileBounds.top - playerBounds.height);
+					this->player->setPosition(currentPlayerBounds.left, tileBounds.top - playerBounds.height);
 					this->player->setInAir(false);
-					playerBounds = this->player->getGlobalBounds();
+					playerBounds.top = tileBounds.top - playerBounds.height;
+					currentPlayerBounds = this->player->getGlobalBounds();
 				}
 				//Top collision
 				else if (playerBounds.top > tileBounds.top &&
@@ -83,8 +86,9 @@ void Game::updateCollision(sf::FloatRect playerBounds)
 					)
 				{
 					this->player->resetVelocityY();
-					this->player->setPosition(playerBounds.left, tileBounds.top + tileBounds.height);
-					playerBounds = this->player->getGlobalBounds();
+					this->player->setPosition(currentPlayerBounds.left, tileBounds.top + tileBounds.height);
+					playerBounds.top = tileBounds.top + tileBounds.height;
+					currentPlayerBounds = this->player->getGlobalBounds();
 				}
 
 				//Right collision
@@ -95,7 +99,7 @@ void Game::updateCollision(sf::FloatRect playerBounds)
 					)
 				{
 					this->player->resetVelocityX();
-					this->player->setPosition(tileBounds.left - playerBounds.width, playerBounds.top);
+					this->player->setPosition(tileBounds.left - playerBounds.width, currentPlayerBounds.top);
 				}
 				//Left collision
 				else if (playerBounds.left > tileBounds.left &&
@@ -105,7 +109,7 @@ void Game::updateCollision(sf::FloatRect playerBounds)
 					)
 				{
 					this->player->resetVelocityX();
-					this->player->setPosition(tileBounds.left + tileBounds.width, playerBounds.top);
+					this->player->setPosition(tileBounds.left + tileBounds.width, currentPlayerBounds.top);
 				}
 			}
 		}

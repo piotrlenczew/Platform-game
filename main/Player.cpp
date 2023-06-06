@@ -21,7 +21,7 @@ void Player::initSprite()
 	this->currentFrame = sf::IntRect(0, 56, 8, 8);
 
 	this->sprite.setTextureRect(this->currentFrame);
-	this->sprite.setScale(5.f, 5.f);
+	this->sprite.setScale(3.5f, 3.5f);
 }
 
 void Player::initAnimations()
@@ -37,7 +37,7 @@ void Player::initPhysics()
 	this->acceleration = 1.2f;
 	this->drag = 0.9f;
 	this->gravity = 3.f;
-	this->velocityMaxY = 20.f;
+	this->velocityMaxY = 25.f;
 }
 
 Player::Player(sf::Vector2f spawnpoint) : spawnpoint(spawnpoint)
@@ -167,7 +167,7 @@ void Player::updateMovement()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !this->in_air)
 	{
-		this->velocity.y = -20.0f;
+		this->velocity.y = -25.0f;
 		this->in_air = true;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && this->in_air)
@@ -212,7 +212,7 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}
-		this->sprite.setScale(4.5f, 4.5f);
+		this->sprite.setScale(3.5f, 3.5f);
 		this->sprite.setOrigin(0.f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::MOVING_LEFT)
@@ -227,22 +227,22 @@ void Player::updateAnimations()
 			this->animationTimer.restart();
 			this->sprite.setTextureRect(this->currentFrame);
 		}
-		this->sprite.setScale(-4.5f, 4.5f);
-		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.5f, 0.f);
+		this->sprite.setScale(-3.5f, 3.5f);
+		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 3.5f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::IN_AIR_RIGHT)
 	{
 		this->currentFrame.top = 80.0f;
 		this->currentFrame.left += 16.0f;
-		this->sprite.setScale(4.5f, 4.5f);
+		this->sprite.setScale(3.5f, 3.5f);
 		this->sprite.setOrigin(0.f, 0.f);
 	}
 	else if (this->animationState == PLAYER_ANIMATION_STATES::IN_AIR_LEFT)
 	{
 		this->currentFrame.top = 80.0f;
 		this->currentFrame.left += 16.0f;
-		this->sprite.setScale(-4.5f, 4.5f);
-		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 4.5f, 0.f);
+		this->sprite.setScale(-3.5f, 3.5f);
+		this->sprite.setOrigin(this->sprite.getGlobalBounds().width / 3.5f, 0.f);
 	}
 	else
 		this->animationTimer.restart();
