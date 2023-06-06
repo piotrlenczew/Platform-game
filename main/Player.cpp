@@ -32,9 +32,9 @@ void Player::initAnimations()
 
 void Player::initPhysics()
 {
-	this->velocityMax = 10.f;
+	this->velocityMax = 4.f;
 	this->velocityMin = 1.f;
-	this->acceleration = 1.3f;
+	this->acceleration = 1.2f;
 	this->drag = 0.9f;
 	this->gravity = 3.f;
 	this->velocityMaxY = 20.f;
