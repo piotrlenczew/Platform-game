@@ -10,6 +10,7 @@ private:
 	sf::Event event;
 	unsigned int width;
 	unsigned int height;
+	bool is_finished;
 	Player* player;
 	TileMap* tileMap;
 
@@ -21,6 +22,8 @@ public:
 	~Game();
 
 	//Functions
+	bool get_is_finished();
+	void show_end_message();
 	void createTileMap();
 	void updatePlayer();
 	void updateCollision();

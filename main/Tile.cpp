@@ -8,7 +8,7 @@ Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, boo
         return;
     }
     this->can_pass_through = can_pass_through;
-    this->does_kill = does_kill;
+    this->deadly = deadly;
     this->is_exit = is_exit;
     this->deadly = deadly;
     this->position = sf::Vector2f(x, y);

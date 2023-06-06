@@ -18,6 +18,7 @@ Game::Game(unsigned int width, unsigned int height, std::string map_source)
 	this->map_source = map_source;
 	this->width = width;
 	this->height = height;
+	this->is_finished = false;
 	this->createTileMap();
 	this->initWindow();
 	this->initPlayer();
@@ -55,7 +56,8 @@ void Game::updateCollision()
 				}
 				if (tile->is_exit)
 				{
-					// TO DO
+					is_finished = true;
+					break;
 				}
 			}
 		
@@ -106,6 +108,10 @@ void Game::updateCollision()
 					this->player->setPosition(tileBounds.left + tileBounds.width, playerBounds.top);
 				}
 			}
+		}
+		if (is_finished)
+		{
+			break;
 		}
 	}
 
@@ -189,6 +195,27 @@ void Game::render()
 	this->renderPlayer();
 
 	this->window.display();
+}
+
+void Game::show_end_message()
+{
+	sf::Sprite sprite;
+	sf::Texture texture;
+	if (!texture.loadFromFile("../Textures/END.png"))
+	{
+		std::cout << "ERROR::GAME::COULD_NOT_LOAD_END_TEXTURE" << std::endl;
+	}
+	sprite.setTexture(texture);
+	this->window.clear();
+	this->window.draw(sprite);
+	this->window.display();
+	sf::sleep(sf::seconds(5));
+	this->window.close();
+}
+
+bool Game::get_is_finished()
+{
+	return is_finished;
 }
 
 const sf::RenderWindow& Game::getWindow() const

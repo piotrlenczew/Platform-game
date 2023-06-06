@@ -13,7 +13,14 @@ int main()
     while (game.getWindow().isOpen())
     {
         game.update();
+        if (game.get_is_finished())
+        {
+            game.show_end_message();
+            break;
+        }
+
         game.render();
+
     }
 
     return 0;
