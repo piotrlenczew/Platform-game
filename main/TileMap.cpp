@@ -40,7 +40,7 @@ void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height,
             std :: cout<< type << " ";
             if (type == 0)
             {
-                row.push_back(new MinecraftLavaTile("../Textures/terrain.png", j * 32, i * 32, false, false, true));
+                row.push_back(new MinecraftLavaTile("../Textures/terrain.png", j * 32, i * 32, true, false, true));
             }
             if (type == 1)
             {
@@ -64,7 +64,7 @@ void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height,
             }
             else if (type == 6)
             {
-                row.push_back(new MinecraftMushroomTile("../Textures/terrain.png", j * 32, i * 32, false, false, false));
+                row.push_back(new MinecraftMushroomTile("../Textures/terrain.png", j * 32, i * 32, true, true, false));
             }
         }
         std::cout << std::endl;

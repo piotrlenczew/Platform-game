@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Tile.h"
 
-Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit, bool does_kill, sf::IntRect wherabouts_in_png)
+Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, bool is_exit, bool deadly, sf::IntRect wherabouts_in_png)
 {
     if (!setUpSprite(texturename, wherabouts_in_png))
     {
@@ -10,6 +10,7 @@ Tile::Tile(std::string texturename, float x, float y, bool can_pass_through, boo
     this->can_pass_through = can_pass_through;
     this->does_kill = does_kill;
     this->is_exit = is_exit;
+    this->deadly = deadly;
     this->position = sf::Vector2f(x, y);
     sprite.setPosition(this->position);
 

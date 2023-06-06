@@ -32,12 +32,12 @@ void Player::initAnimations()
 
 void Player::initPhysics()
 {
-	this->velocityMax = 15.f;
+	this->velocityMax = 10.f;
 	this->velocityMin = 1.f;
-	this->acceleration = 1.5f;
+	this->acceleration = 1.3f;
 	this->drag = 0.9f;
 	this->gravity = 3.f;
-	this->velocityMaxY = 30.f;
+	this->velocityMaxY = 20.f;
 }
 
 Player::Player(sf::Vector2f spawnpoint) : spawnpoint(spawnpoint)
@@ -83,6 +83,11 @@ void Player::setInAir(bool in_air)
 void Player::setPosition(const float x, const float y)
 {
 	this->sprite.setPosition(x, y);
+}
+
+void Player::respawn()
+{
+	this->setPosition(this->spawnpoint.x, this->spawnpoint.y);
 }
 
 void Player::resetVelocityY()
@@ -162,7 +167,7 @@ void Player::updateMovement()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !this->in_air)
 	{
-		this->velocity.y = -30.0f;
+		this->velocity.y = -20.0f;
 		this->in_air = true;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && this->in_air)
