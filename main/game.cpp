@@ -121,11 +121,11 @@ void Game::updateCollision()
 		this->player->setInAir(false);
 	}
 	// Top
-	if (this->player->getPosition().y <= 0)
-	{
-		this->player->resetVelocityY();
-		this->player->setPosition(this->player->getPosition().x, 0.f);
-	}
+	//if (this->player->getPosition().y <= 0)
+	//{
+	//	this->player->resetVelocityY();
+	//	this->player->setPosition(this->player->getPosition().x, 0.f);
+	//}
 	// Right
 	if (this->player->getPosition().x > this->window.getSize().x)
 	{
