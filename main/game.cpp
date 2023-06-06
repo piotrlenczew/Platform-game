@@ -11,7 +11,7 @@ void Game::initWindow()
 
 void Game::initPlayer(unsigned int start_x, unsigned int start_y)
 {
-	this->player = new Player(sf::Vector2f(100, 100));
+	this->player = new Player(sf::Vector2f(start_x, start_y));
 }
 
 Game::Game(unsigned int width, unsigned int height, unsigned int number_of_levels)
