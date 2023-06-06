@@ -40,31 +40,31 @@ void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height,
             std :: cout<< type << " ";
             if (type == 0)
             {
-                row.push_back(new MinecraftLavaTile("../Textures/terrain.png", j * 32, i * 32, false, false));
+                row.push_back(new MinecraftLavaTile("../Textures/terrain.png", j * 32, i * 32, true, false, true));
             }
             if (type == 1)
             {
-                row.push_back(new MinecraftDirtTile("../Textures/terrain.png", j * 32, i * 32, false, false));
+                row.push_back(new MinecraftDirtTile("../Textures/terrain.png", j * 32, i * 32, false, false, false));
             }
             else if (type == 2)
             {
-                row.push_back(new MinecraftGrassTile("../Textures/terrain.png", j * 32, i * 32, false, false));
+                row.push_back(new MinecraftGrassTile("../Textures/terrain.png", j * 32, i * 32, false, false, false));
             }
             else if (type == 3)
             {
-                row.push_back(new MinecraftLeafTile("../Textures/terrain.png", j * 32, i * 32, false, false));
+                row.push_back(new MinecraftLeafTile("../Textures/terrain.png", j * 32, i * 32, false, false, false));
             }
             else if (type == 4)
             {
-                row.push_back(new MinecraftWoodTile("../Textures/terrain.png", j * 32, i * 32, false, false));
+                row.push_back(new MinecraftWoodTile("../Textures/terrain.png", j * 32, i * 32, false, false, false));
             }
             else if (type ==  5)
             {
-                row.push_back( new MinecraftSkyTile("../Textures/terrain.png", j * 32, i * 32, true, false));
+                row.push_back( new MinecraftSkyTile("../Textures/terrain.png", j * 32, i * 32, true, false, false));
             }
             else if (type == 6)
             {
-                row.push_back(new MinecraftMushroomTile("../Textures/terrain.png", j * 32, i * 32, false, false));
+                row.push_back(new MinecraftMushroomTile("../Textures/terrain.png", j * 32, i * 32, true, true, false));
             }
         }
         std::cout << std::endl;

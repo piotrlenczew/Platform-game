@@ -45,10 +45,22 @@ void Game::updateCollision()
 		{
 			playerBounds = this->player->getGlobalBounds();
 			tileBounds = tile->getGlobalBounds();
-		
-			if (tileBounds.intersects(playerBounds) && !tile->can_pass_through)
+
+			if (tileBounds.intersects(playerBounds) && tile->can_pass_through)
 			{
-				std::cout << playerBounds.left << ", " << playerBounds.top << ": ";
+				if (tile->deadly)
+				{
+					this->player->respawn();
+					return;
+				}
+				if (tile->is_exit)
+				{
+					// TO DO
+				}
+			}
+		
+			else if (tileBounds.intersects(playerBounds))
+			{
 				//Bottom collision
 				if (playerBounds.top < tileBounds.top &&
 					playerBounds.top + playerBounds.height < tileBounds.top + tileBounds.height &&
@@ -72,8 +84,6 @@ void Game::updateCollision()
 					this->player->setPosition(playerBounds.left, tileBounds.top + tileBounds.height);
 					playerBounds = this->player->getGlobalBounds();
 				}
-
-				std::cout << playerBounds.left << ", " << playerBounds.top << std::endl;
 
 				//Right collision
 				if (playerBounds.left < tileBounds.left &&

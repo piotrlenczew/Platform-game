@@ -85,6 +85,11 @@ void Player::setPosition(const float x, const float y)
 	this->sprite.setPosition(x, y);
 }
 
+void Player::respawn()
+{
+	this->setPosition(this->spawnpoint.x, this->spawnpoint.y);
+}
+
 void Player::resetVelocityY()
 {
 	this->velocity.y = 0.f;

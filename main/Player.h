@@ -47,6 +47,7 @@ public:
 	//Modifiers
 	void setInAir(bool in_air);
 	void setPosition(const float x, const float y);
+	void respawn();
 	void resetVelocityY();
 	void resetVelocityX();
 
