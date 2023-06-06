@@ -10,7 +10,7 @@ void Game::initWindow()
 
 void Game::initPlayer()
 {
-	this->player = new Player(sf::Vector2f(100, 100));
+	this->player = new Player(sf::Vector2f(100, 300));
 }
 
 Game::Game(unsigned int width, unsigned int height, std::string map_source)
