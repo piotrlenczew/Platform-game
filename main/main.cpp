@@ -8,15 +8,15 @@ int main()
     unsigned int width = 32 * 24;
     unsigned int height = 32 * 16;
     
-    Game game(width, height, "../Textures/map_1.txt");
+    Game game(width, height, 3);
 
     while (game.getWindow().isOpen())
     {
         game.update();
+        
         if (game.get_is_finished())
         {
             game.show_end_message();
-            break;
         }
 
         game.render();

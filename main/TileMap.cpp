@@ -19,14 +19,8 @@ TileMap::~TileMap()
     }
 }
 
-void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height, std::string map_source)
+void TileMap::fill_the_background(unsigned screen_width, unsigned screen_height, std::ifstream& in)
 {
-    std::ifstream in(map_source);
-    if (!in.is_open())
-    {
-		std::cout << "Error: file not found" << std::endl;
-		return;
-	}
     unsigned int width, height;
     in >> width;
     in >> height;

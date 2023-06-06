@@ -10,15 +10,17 @@ private:
 	sf::Event event;
 	unsigned int width;
 	unsigned int height;
+	unsigned int number_of_levels;
+	unsigned int current_level;
 	bool is_finished;
 	Player* player;
 	TileMap* tileMap;
 
 	void initWindow();
-	void initPlayer();
+	void initPlayer(unsigned int start_x, unsigned int start_y);
 
 public:
-	Game(unsigned int width, unsigned int height, std::string map_source);
+	Game(unsigned int width, unsigned int height, unsigned int number_of_levels);
 	~Game();
 
 	//Functions

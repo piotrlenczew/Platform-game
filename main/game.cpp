@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "game.h"
+#include <fstream>
 
 void Game::initWindow()
 {
@@ -8,20 +9,20 @@ void Game::initWindow()
 	this->window.setFramerateLimit(60);
 }
 
-void Game::initPlayer()
+void Game::initPlayer(unsigned int start_x, unsigned int start_y)
 {
-	this->player = new Player(sf::Vector2f(100, 100));
+	this->player = new Player(sf::Vector2f(start_x, start_y));
 }
 
-Game::Game(unsigned int width, unsigned int height, std::string map_source)
+Game::Game(unsigned int width, unsigned int height, unsigned int number_of_levels)
 {
-	this->map_source = map_source;
 	this->width = width;
 	this->height = height;
+	this-> number_of_levels = number_of_levels;
+	this->current_level = 1;
 	this->is_finished = false;
 	this->createTileMap();
 	this->initWindow();
-	this->initPlayer();
 }
 
 Game::~Game()
@@ -150,7 +151,13 @@ void Game::updateCollision()
 void Game::createTileMap()
 {
 	this ->tileMap = new TileMap();
-	this->tileMap->fill_the_background(this->width, this->height, map_source);
+	std::string map_source = "../Maps/map_" + std::to_string(this->current_level) + ".txt";
+	std::ifstream map_file(map_source);
+	this->tileMap->fill_the_background(this->width, this->height, map_file);
+	int spawn_x;
+	int spawn_y;
+	map_file >> spawn_x >> spawn_y;
+	this->initPlayer(spawn_x, spawn_y);
 }
 
 void Game::update()
@@ -199,6 +206,17 @@ void Game::render()
 
 void Game::show_end_message()
 {
+	if (current_level != number_of_levels)
+	{
+		current_level += 1;
+		delete this->tileMap;
+		this->window.clear();
+		this->window.display();
+		this->is_finished = false;
+		delete this->player;
+		createTileMap();
+		return;
+	}
 	sf::Sprite sprite;
 	sf::Texture texture;
 	if (!texture.loadFromFile("../Textures/END.png"))

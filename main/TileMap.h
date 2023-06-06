@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Tile.h"
+#include <fstream>
+#include "pch.h"
 
 class TileMap
 {
@@ -12,7 +14,7 @@ public:
 	~TileMap();
 
 	//Functions
-	void fill_the_background(unsigned screen_width, unsigned screen_height, std::string map_source);
+	void fill_the_background(unsigned screen_width, unsigned screen_height, std::ifstream& in);
 	void addTile(unsigned x, unsigned y);
 	void removeTile(unsigned x, unsigned y);
 	std::vector< std::vector<Tile*> > getTiles();
