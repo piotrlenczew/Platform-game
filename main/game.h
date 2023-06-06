@@ -28,7 +28,7 @@ public:
 	void show_end_message();
 	void createTileMap();
 	void updatePlayer();
-	void updateCollision();
+	void updateCollision(sf::FloatRect playerBoundsBeforeMove);
 	void update();
 	void renderPlayer();
 	void renderTiles();

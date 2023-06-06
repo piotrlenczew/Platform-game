@@ -36,10 +36,9 @@ void Game::updatePlayer()
 	this->player->update();
 }
 
-void Game::updateCollision()
+void Game::updateCollision(sf::FloatRect playerBounds)
 {
 	//Tiles
-	sf::FloatRect playerBounds = this->player->getGlobalBounds();
 	sf::FloatRect tileBounds;
 	for (auto tileRow : this->tileMap->getTiles())
 	{
@@ -182,10 +181,11 @@ void Game::update()
 			this->player->resetAnimationTimer();
 		}
 	}
+	sf::FloatRect playerBoundBeforeMove = this->player->getGlobalBounds();
 
 	this->updatePlayer();
 
-	this->updateCollision();
+	this->updateCollision(playerBoundBeforeMove);
 }
 
 void Game::renderPlayer()
