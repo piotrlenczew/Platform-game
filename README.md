@@ -31,6 +31,7 @@ Player- Przechowuje:
 
 Jak korzystaæ z projektu:
 Po zklonowaniu projektu do visual studio, wystarczy w³¹czyæ plik .sln i klikn¹æ run.
+Pliki sfml oraz ustawienia s¹ zapisane w plikach w repozytorium. 
 Mapy powinny byæ przechowywane w folderze "../Maps/map_" na koniec wystarczy dodaæ numer mapy
 numery musz¹ byæ po kolei, 1, 2, 3 bêdzie dzia³aæ 1, 2, 4 nie bêdzie
 format pliku tesktowego:
